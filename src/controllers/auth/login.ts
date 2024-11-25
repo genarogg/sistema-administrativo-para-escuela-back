@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "@models";
-import { compararContrasena, successResponse ,errorResponse } from "@fn"
+import { compararContrasena, successResponse, errorResponse, generarToken } from "@fn"
 
 
 const loginPost = async (req: Request, res: Response) => {
@@ -23,8 +23,11 @@ const loginPost = async (req: Request, res: Response) => {
             return res.status(400).json({ error: "Usuario o contraseña incorrectos" });
         }
 
+        const token = generarToken({ id: usuario.id });
+
         const respuesta = successResponse({
             message: "Inicio de sesión exitoso",
+            token,
         });
 
         // Envía el token en la respuesta
