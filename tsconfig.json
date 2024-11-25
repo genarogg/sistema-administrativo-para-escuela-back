@@ -13,7 +13,7 @@
       "@fn": ["functions/index.ts"],
       "@email/*": ["email/*"],
 
-      "@controller/*": ["controllers/*"],
+      "@controllers": ["controllers/index.ts"],
       "@router": ["routers/index.ts"],
       "@models": ["models/index.ts"],
       "@db": ["config/db-conenction.ts"]

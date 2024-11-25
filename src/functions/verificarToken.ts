@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { User } from "@models";
+import { User } from "@models"; // Asegúrate de que la ruta sea correcta
 
 const verificarToken = async (req: Request, res: Response, next: NextFunction) => {
     const JWTSECRETO = process.env.JWTSECRETO || "jwt-secret";
@@ -26,11 +26,9 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
 
-        //@ts-ignore
-        req.user = usuario;
+        req.user = usuario; 
         
-        next();
-
+        next(); // Continúa con la siguiente función middleware
     } catch (err) {
         console.log(err);
         return res.status(401).json({

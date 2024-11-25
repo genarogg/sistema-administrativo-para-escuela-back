@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User, Bitacora } from "@models";
 
 
-import { encriptarContrasena, verificarToken } from "@fn";
+import { encriptarContrasena } from "@fn";
 
 const registerPost = async (req: Request, res: Response) => {
     const {
@@ -39,17 +39,17 @@ const registerPost = async (req: Request, res: Response) => {
         });
 
         // Crear una entrada en la bitácora
-        await Bitacora.create({
-            usuario,
-            accion: `Se creó el usuario exitosamente: ${usuarioEmail}`,
-        });
+        // await Bitacora.create({
+        //     usuario: req.user!.email,
+        //     accion: `Se creó el usuario exitosamente: ${usuarioEmail}`,
+        // });
 
         return res.status(201).json({ message: "Se creó el usuario exitosamente", type: "success" });
     } catch (error) {
         return res.status(500).json({
             message: "Error al crear el usuario",
             type: "error",
-            error: error.message,
+            // error: error.message,
         });
     }
 };
