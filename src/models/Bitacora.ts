@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
 import sequelize from "@db";
+import moment from "moment-timezone";
 
 class Bitacora extends Model {
     public id!: number;
@@ -28,11 +29,13 @@ Bitacora.init(
         },
         fecha: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: moment().tz("America/Caracas").format("YYYY-MM-DD"),
         },
         hora: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: moment().tz("America/Caracas").format("hh:mm A"),
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -46,6 +49,7 @@ Bitacora.init(
     {
         tableName: "bitacora",
         sequelize: sequelize,
+        freezeTableName: true
     }
 );
 

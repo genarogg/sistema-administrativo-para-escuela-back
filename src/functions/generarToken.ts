@@ -6,7 +6,7 @@ interface Usuario {
 
 const generarToken = (usuario: Usuario) => {
     const JWTSECRETO = process.env.JWTSECRETO || "jwt-secret";
-    const JWTTIEMPO = process.env.JWTTIEMPO || "1h";
+    const JWTTIEMPO = process.env.JWTTIEMPO || "1d";
 
     const { id } = usuario;
 

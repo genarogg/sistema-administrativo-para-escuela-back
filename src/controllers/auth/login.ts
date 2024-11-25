@@ -8,34 +8,37 @@ const loginPost = async (req: Request, res: Response) => {
 
     // Validar campos obligatorios
     if (!email || !password) {
-        return res.status(400).json({ error: "Faltan campos obligatorios." });
+        return res.status(400).json(
+            errorResponse({ message: "Faltan campos obligatorios." })
+        );
     }
 
     try {
         const usuario = await User.findOne({ where: { email } });
 
         if (!usuario) {
-            return res.status(400).json({ error: "Usuario no existe" });
+            return res.status(400).json(errorResponse({ message: "Usuario no existe" }));
         }
 
 
         if (!compararContrasena({ password, hashedPassword: usuario.password })) {
-            return res.status(400).json({ error: "Usuario o contraseña incorrectos" });
+            return res.status(400).json(
+                errorResponse({ message: "Contraseña incorrecta" })
+            );
         }
 
         const token = generarToken({ id: usuario.id });
 
-        const respuesta = successResponse({
-            message: "Inicio de sesión exitoso",
-            token,
-        });
-
         // Envía el token en la respuesta
-        res.status(200).json(respuesta);
+        res.status(200).json(
+            successResponse({
+                message: "Inicio de sesión exitoso",
+                token,
+            }));
 
     } catch (error) {
         console.error("Error en el inicio de sesión:", error);
-        res.status(500).json({ error: "Error en el servidor" });
+        res.status(500).json(errorResponse({ message: "Error en el servidor" }));
     }
 };
 
