@@ -1,18 +1,26 @@
 import { User } from "@models";
 import { encriptarContrasena } from "@fn";
 
-const crearUsuario = async (type: string) => {
-    const hashedPassword = encriptarContrasena("admin");
+const crearUsuario = async ({
+    nombre,
+    apellido,
+    email,
+    password,
+    role,
+    ci,
+    cargoInstitucional,
+}: any) => {
+    const hashedPassword = encriptarContrasena(password);
 
     try {
         await User.create({
-            nombre: "Admin",
-            apellido: "User",
-            email: "admin@admin.com", // Cambia esto por el correo deseado
+            nombre,
+            apellido,
+            email,
             password: hashedPassword,
-            role: type,
-            ci: "123456789", // Cambia esto por el CI deseado
-            cargoInstitucional: "Administrador",
+            role,
+            ci,
+            cargoInstitucional
         });
 
 
