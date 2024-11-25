@@ -30,6 +30,7 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/console-clear": "^1.1.4",
     "@types/cors": "^2.8.17",
     "@types/ejs": "^3.1.5",

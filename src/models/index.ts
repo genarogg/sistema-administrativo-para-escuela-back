@@ -4,4 +4,5 @@ import Bitacora from "./Bitacora";
 
 export {
     User,
+    Bitacora
 }

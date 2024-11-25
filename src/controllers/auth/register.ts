@@ -1,9 +1,10 @@
-import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
-import User from "@models/User";
-import { bitacoraService } from "@model";
+import { User, Bitacora } from "@models";
 
-const addUsuario = async (req: Request, res: Response) => {
+
+import { encriptarContrasena } from "@fn";
+
+const registerPost = async (req: Request, res: Response) => {
     const {
         nombres: usuarioNombre,
         apellidos: usuarioApellido,
@@ -12,20 +13,10 @@ const addUsuario = async (req: Request, res: Response) => {
         rool: usuarioRole,
         ci,
         cargo_institucional,
-        usuario
     } = req.body;
 
     // todos los campos son requeridos
-    if (
-        !usuarioNombre ||
-        !usuarioApellido ||
-        !usuarioEmail ||
-        !password ||
-        !usuarioRole ||
-        !ci ||
-        !cargo_institucional ||
-        !usuario
-    ) {
+    if (!req.body) {
         return res.status(400).json({
             message: "Todos los campos son requeridos",
             type: "error",
@@ -33,7 +24,7 @@ const addUsuario = async (req: Request, res: Response) => {
     }
 
     // Generar un hash de la contraseña
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = encriptarContrasena(password);
 
     try {
         // Crear el usuario en la base de datos
@@ -48,10 +39,10 @@ const addUsuario = async (req: Request, res: Response) => {
         });
 
         // Crear una entrada en la bitácora
-        await bitacoraService.createBitacora({
-            usuario,
-            accion: `Se creó el usuario exitosamente: ${usuarioEmail}`,
-        });
+        // await Bitacora.createBitacora({
+        //     usuario,
+        //     accion: `Se creó el usuario exitosamente: ${usuarioEmail}`,
+        // });
 
         return res.status(201).json({ message: "Se creó el usuario exitosamente", type: "success" });
     } catch (error) {
@@ -63,4 +54,4 @@ const addUsuario = async (req: Request, res: Response) => {
     }
 };
 
-export { addUsuario };
+export default registerPost;
