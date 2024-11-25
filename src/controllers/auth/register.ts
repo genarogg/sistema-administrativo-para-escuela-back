@@ -2,17 +2,17 @@ import { Request, Response } from "express";
 import { User, Bitacora } from "@models";
 
 
-import { encriptarContrasena } from "@fn";
+import { encriptarContrasena, verificarToken } from "@fn";
 
 const registerPost = async (req: Request, res: Response) => {
     const {
-        nombres: usuarioNombre,
-        apellidos: usuarioApellido,
-        email: usuarioEmail,
+        nombres: nombre,
+        apellidos: apellido,
+        email,
         password,
-        rool: usuarioRole,
+        rool: role,
         ci,
-        cargo_institucional,
+        cargo_institucional: cargoInstitucional
     } = req.body;
 
     // todos los campos son requeridos
@@ -28,21 +28,21 @@ const registerPost = async (req: Request, res: Response) => {
 
     try {
         // Crear el usuario en la base de datos
-        const newUser = await User.create({
-            nombre: usuarioNombre,
-            apellido: usuarioApellido,
-            email: usuarioEmail,
+        await User.create({
+            nombre,
+            apellido,
+            email,
             password: hashedPassword,
-            role: usuarioRole,
-            ci: ci,
-            cargoInstitucional: cargo_institucional,
+            role,
+            ci,
+            cargoInstitucional,
         });
 
         // Crear una entrada en la bitácora
-        // await Bitacora.createBitacora({
-        //     usuario,
-        //     accion: `Se creó el usuario exitosamente: ${usuarioEmail}`,
-        // });
+        await Bitacora.create({
+            usuario,
+            accion: `Se creó el usuario exitosamente: ${usuarioEmail}`,
+        });
 
         return res.status(201).json({ message: "Se creó el usuario exitosamente", type: "success" });
     } catch (error) {

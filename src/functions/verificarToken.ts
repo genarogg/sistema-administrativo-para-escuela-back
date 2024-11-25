@@ -1,34 +1,42 @@
+import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { User } from "@models";
 
-interface Usuario {
-  id: number;
-}
+const verificarToken = async (req: Request, res: Response, next: NextFunction) => {
+    const JWTSECRETO = process.env.JWTSECRETO || "jwt-secret";
+    const authHeader = req.headers.authorization;
 
-const verificarToken = (token: string | undefined): Usuario | null => {
-  const JWTSECRETO = process.env.JWTSECRETO || "jwt-secret";
-
-  if (!token) {
-    console.error("Token no proporcionado");
-    return null;
-  }
-
-  try {
-    const payload = jwt.verify(token, JWTSECRETO) as JwtPayload | undefined;
-
-    if (!payload || !payload.id) {
-      console.error("El token no contiene un id de usuario válido");
-      return null;
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({ message: "Token no proporcionado o inválido" });
     }
 
-    const usuario: Usuario = {
-      id: payload.id,
-    };
+    const token = authHeader.split(" ")[1];
 
-    return usuario;
-  } catch (err) {
-    console.error("Error al verificar el token:", err);
-    return null;
-  }
+    try {
+        const payload = jwt.verify(token, JWTSECRETO) as JwtPayload | undefined;
+
+        if (!payload || !payload.id) {
+            return res.status(401).json({ message: "El token no contiene un id de usuario válido" });
+        }
+
+        // Buscar al usuario en la base de datos
+        const usuario = await User.findByPk(payload.id);
+
+        if (!usuario) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+
+        //@ts-ignore
+        req.user = usuario;
+        
+        next();
+
+    } catch (err) {
+        console.log(err);
+        return res.status(401).json({
+            message: "Error al verificar el token", type: "error"
+        });
+    }
 };
 
 export default verificarToken;
