@@ -26,15 +26,15 @@ const index = async () => {
         cargoInstitucional: "Admin"
     });
 
-    await crearUsuario({
-        nombre: "Usuario",
-        apellido: "Usuario",
-        email: "usuario@usuario.com",
-        password: "usuario",
-        role: "standard",
-        ci: "123456",
-        cargoInstitucional: "Usuario"
-    });
+    // await crearUsuario({
+    //     nombre: "Usuario",
+    //     apellido: "Usuario",
+    //     email: "usuario@usuario.com",
+    //     password: "usuario",
+    //     role: "standard",
+    //     ci: "123456",
+    //     cargoInstitucional: "Usuario"
+    // });
 
     log.cyan("Usuarios creados exitosamente");
 }

@@ -10,7 +10,7 @@ const crearUsuario = async ({
     ci,
     cargoInstitucional,
 }: any) => {
-    const hashedPassword = encriptarContrasena(password);
+    const hashedPassword = encriptarContrasena({password});
 
     try {
         await User.create({

@@ -26,8 +26,8 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
 
-        req.user = usuario; 
-        
+        // @ts-ignore
+        req.user = usuario; // Asigna el usuario completo a la solicitud para su uso posterior
         next(); // Continúa con la siguiente función middleware
     } catch (err) {
         console.log(err);

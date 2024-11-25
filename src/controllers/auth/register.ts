@@ -24,7 +24,7 @@ const registerPost = async (req: Request, res: Response) => {
     }
 
     // Generar un hash de la contraseña
-    const hashedPassword = encriptarContrasena(password);
+    const hashedPassword = "encriptarContrasena(password);"
 
     try {
         // Crear el usuario en la base de datos

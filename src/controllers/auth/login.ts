@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "@models";
-import { compararContrasena } from "@fn"
+import { compararContrasena, successResponse ,errorResponse } from "@fn"
 
 
 const loginPost = async (req: Request, res: Response) => {
@@ -18,14 +18,18 @@ const loginPost = async (req: Request, res: Response) => {
             return res.status(400).json({ error: "Usuario no existe" });
         }
 
+
         if (!compararContrasena({ password, hashedPassword: usuario.password })) {
             return res.status(400).json({ error: "Usuario o contraseña incorrectos" });
         }
 
-        
+        const respuesta = successResponse({
+            message: "Inicio de sesión exitoso",
+        });
 
         // Envía el token en la respuesta
-        res.status(200).json({ mensaje: "Inicio de sesión exitoso" });
+        res.status(200).json(respuesta);
+
     } catch (error) {
         console.error("Error en el inicio de sesión:", error);
         res.status(500).json({ error: "Error en el servidor" });

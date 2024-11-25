@@ -20,6 +20,6 @@
     }
   },
 
-  "include": ["*.ts", "**/**/*.ts"],
+  "include": ["*.ts", "**/**/*.ts", "/src/types/express.d.ts"],
   "exclude": ["node_modules"]
 }
