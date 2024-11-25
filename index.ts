@@ -37,11 +37,12 @@ sequelize.sync({ logging: false }).then(() => {
 });
 
 // Importar rutas
-import { inicioRouter, authRouter } from "@router";
+import { inicioRouter, authRouter, estudianteRouter } from "@router";
 
 
 app.use("/", inicioRouter);
 app.use("/auth", authRouter);
+app.use("/estudiante", estudianteRouter);
 
 // import { sendEmail } from "@email/index";
 

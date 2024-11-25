@@ -2,4 +2,6 @@
 import registerPost from "./auth/register";
 import loginPost from "./auth/login";
 
-export { registerPost, loginPost };
+import registrarEstudiantePost from "./estudiante/registrar";
+
+export { registerPost, loginPost, registrarEstudiantePost };

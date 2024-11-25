@@ -2,5 +2,6 @@
 
 import inicioRouter from "./inicio";
 import authRouter from "./auth";
+import estudianteRouter from "./estudiante";
 
-export { inicioRouter, authRouter };
+export { inicioRouter, authRouter, estudianteRouter };

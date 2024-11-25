@@ -40,12 +40,11 @@ const registerPost = async (req: Request, res: Response) => {
         });
 
         // Crear una entrada en la bitácora
-        const bitacora = await Bitacora.create({
+        await Bitacora.create({
             usuario: req.body.user.email,
             accion: `Se creó el usuario exitosamente: ${usuario.email}`,
         });
 
-        console.log(bitacora)
 
         return res.status(201).json(
             successResponse({ message: "Usuario creado exitosamente" })
