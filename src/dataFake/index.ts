@@ -6,8 +6,8 @@ import { User } from "@models";
 
 
 const index = async () => {
-    // await crearEmpleados();
     // crearEstudiantesInscritos()
+    // await crearEmpleados();
     try {
         const adminUser = await User.findOne({ where: { role: "admin" } });
 

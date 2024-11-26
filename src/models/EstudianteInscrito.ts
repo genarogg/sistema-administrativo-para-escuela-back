@@ -28,7 +28,7 @@ class EstudianteInscrito extends Model {
     declare observacion_de_medicamento: string;
     declare inicio_periodo_escolar: string;
     declare fin_periodo_escolar: string;
-    declare usuario: string;
+
     declare created_at: string;
     declare updated_at: string;
     declare representante_apellidos: string;
@@ -163,10 +163,7 @@ EstudianteInscrito.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        usuario: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+
 
         representante_apellidos: {
             type: DataTypes.STRING,

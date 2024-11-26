@@ -31,7 +31,7 @@ const crearEstudiantesInscritos = async () => {
                 observacion_de_medicamento: 'N/A',
                 inicio_periodo_escolar: '2021-09-01',
                 fin_periodo_escolar: '2022-07-15',
-                usuario: 'admin',
+              
                 representante_apellidos: `RepresentanteApellido${i}`,
                 representante_nombres: `RepresentanteNombre${i}`,
                 representante_nacionalidad: 'Venezolana',

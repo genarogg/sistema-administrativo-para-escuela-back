@@ -12,6 +12,8 @@ import generarAsistencia from "./asistencia/general"
 import obtenerAsistencias from "./asistencia/getAll"
 import registrarAsistencia from "./asistencia/registrarAsistencia"
 
+import obtenerBitacora from "./bitacora/getAll";
+
 export {
     registerPost,
     loginPost,
@@ -24,5 +26,7 @@ export {
 
     generarAsistencia,
     obtenerAsistencias,
-    registrarAsistencia
+    registrarAsistencia,
+
+    obtenerBitacora
 };

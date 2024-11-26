@@ -3,8 +3,59 @@ import { EstudianteInscrito, Bitacora } from "@models";
 import { successResponse, errorResponse } from "@fn";
 
 const registrarEstudiantePost = async (req: Request, res: Response) => {
-
+    console.log("req.body", req.body);
     const {
+        apellidos,
+        nombres,
+        sex,
+        nacionalidad,
+        ci,
+        fecha_nacimiento,
+        lugar_nacimiento,
+        entd_federativa,
+        plantel_de_procedencia,
+        talla,
+        peso,
+        medidas,
+        edad,
+        lateralidad,
+        talla_camisa,
+        talla_pantalon,
+        talla_zapato,
+        via_de_acceso_al_lugar_donde_vive,
+        con_quien_vive,
+        condicion_especial,
+        observacion_de_condicion,
+        el_estudiante_consume_medicamento,
+        observacion_de_medicamento,
+        inicio_periodo_escolar,
+        fin_periodo_escolar,
+        user: usuario,
+        representante_apellidos,
+        representante_nombres,
+        representante_nacionalidad,
+        representante_cedula,
+        representante_urb_br,
+        representante_fecha_nacimiento,
+        representante_direccion_habitacion_av,
+        representante_calle,
+        representante_casa_apartamento,
+        representante_numero_habitacion,
+        representante_referencia,
+        representante_ciudad,
+        representante_parroquia,
+        representante_estado,
+        representante_telefono_habitacion,
+        representante_telefono_personal,
+        representante_email,
+        representante_profesion,
+        representante_lugarTrabajo,
+        representante_telefono_trabajo,
+        representante_nivelAcademico,
+        representante_cargo
+    } = req.body;
+
+    console.log({
         apellidos,
         nombres,
         sex,
@@ -53,7 +104,8 @@ const registrarEstudiantePost = async (req: Request, res: Response) => {
         representante_telefono_trabajo,
         representante_nivelAcademico,
         representante_cargo
-    } = req.body;
+    });
+
 
     // todos los campos son requeridos
     if (!req.body) {
@@ -90,7 +142,6 @@ const registrarEstudiantePost = async (req: Request, res: Response) => {
             observacion_de_medicamento,
             inicio_periodo_escolar,
             fin_periodo_escolar,
-            usuario,
             representante_apellidos,
             representante_nombres,
             representante_nacionalidad,
