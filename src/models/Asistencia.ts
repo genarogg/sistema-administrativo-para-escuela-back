@@ -2,18 +2,18 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import sequelize from "@db";
 
 class Asistencia extends Model {
-    public id!: number;
-    public nombres!: string;
-    public apellidos!: string;
-    public ci!: string;
-    public fecha!: string;
-    public hora_entrada?: string;
-    public comentario_entrada?: string;
-    public hora_almuerzo?: string;
-    public comentario_almuerzo?: string;
-    public hora_salida?: string;
-    public comentario_salida?: string;
-    public vino?: string;
+    declare id: number;
+    declare nombres: string;
+    declare apellidos: string;
+    declare ci: string;
+    declare fecha: string;
+    declare hora_entrada?: string;
+    declare comentario_entrada?: string;
+    declare hora_almuerzo?: string;
+    declare comentario_almuerzo?: string;
+    declare hora_salida?: string;
+    declare comentario_salida?: string;
+    declare vino?: string;
 }
 
 Asistencia.init(

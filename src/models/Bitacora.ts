@@ -3,13 +3,13 @@ import sequelize from "@db";
 import moment from "moment-timezone";
 
 class Bitacora extends Model {
-    public id!: number;
-    public usuario!: string;
-    public accion!: string;
-    public fecha!: string;
-    public hora!: string;
-    public createdAt!: Date;
-    public updatedAt!: Date;
+    declare id: number;
+    declare usuario: string;
+    declare accion: string;
+    declare fecha: string;
+    declare hora: string;
+    declare createdAt: Date;
+    declare updatedAt: Date;
 }
 
 Bitacora.init(

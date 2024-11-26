@@ -8,9 +8,10 @@ export const generateAsistencia = async () => {
         // Obtener todos los empleados
         const empleados = await Empleado.findAll();
 
-        for (const empleado of empleados) {
-            const { id, nombres, apellidos, ci } = empleado;
 
+
+        for (const empleado of empleados) {
+            const { nombres, apellidos, ci } = empleado.dataValues;
             // Crear la asistencia personal
             await Asistencia.create({
                 nombres,
