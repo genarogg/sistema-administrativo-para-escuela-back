@@ -6,15 +6,23 @@ import registrarEstudiantePost from "./estudiante/registrar";
 import getAllEstudiante from "./estudiante/getAll";
 
 import registerEmpleado from "./empleado/registrar";
+import obtenerEmpleados from "./empleado/getAll";
+
 import generarAsistencia from "./asistencia/general"
 import obtenerAsistencias from "./asistencia/getAll"
+import registrarAsistencia from "./asistencia/registrarAsistencia"
 
 export {
     registerPost,
     loginPost,
+
     registrarEstudiantePost,
     getAllEstudiante,
+
     registerEmpleado,
+    obtenerEmpleados,
+
     generarAsistencia,
-    obtenerAsistencias
+    obtenerAsistencias,
+    registrarAsistencia
 };
