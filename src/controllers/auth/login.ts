@@ -4,7 +4,7 @@ import { compararContrasena, successResponse, errorResponse, generarToken } from
 
 
 const loginPost = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
+    const { correo: email, contrasena: password } = req.body;
 
     // Validar campos obligatorios
     if (!email || !password) {
