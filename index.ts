@@ -38,13 +38,14 @@ sequelize.sync({ logging: false }).then(() => {
 });
 
 // Importar rutas
-import { inicioRouter, authRouter, estudianteRouter, empleadoRouter } from "@router";
+import { inicioRouter, authRouter, estudianteRouter, empleadoRouter, asistenciaRouter } from "@router";
 
 
 app.use("/", inicioRouter);
 app.use("/auth", authRouter);
 app.use("/estudiante", estudianteRouter);
 app.use("/empleado", empleadoRouter);
+app.use("/asistencia", asistenciaRouter);
 
 // import { sendEmail } from "@email/index";
 
@@ -56,7 +57,7 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
 
 import index from "./src/dataFake/index";
 
-app.listen(PORT, async() => {
+app.listen(PORT, async () => {
   log.green(`El servidor esta corriendo http://localhost:${PORT}`);
   await index();
   await generarAsistencia();
