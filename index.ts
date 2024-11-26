@@ -4,9 +4,10 @@ clear();
 
 import express, { Request, Response } from "express";
 
+
 import { log, path } from "@fn";
 import cors from "cors";
-import { User } from "@models";
+import { generarAsistencia } from "@controllers";
 
 // variables de entorno
 const PORT = process.env.PORT || 4000;
@@ -55,7 +56,8 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
 
 import index from "./src/dataFake/index";
 
-app.listen(PORT, () => {
+app.listen(PORT, async() => {
   log.green(`El servidor esta corriendo http://localhost:${PORT}`);
-  index();
+  await index();
+  await generarAsistencia();
 });

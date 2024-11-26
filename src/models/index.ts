@@ -3,10 +3,12 @@ import User from "./User";
 import Bitacora from "./Bitacora";
 import EstudianteInscrito from "./EstudianteInscrito";
 import Empleado from "./Empleado";
+import Asistencia from "./Asistencia";
 
 export {
     User,
-    Bitacora, 
+    Bitacora,
     EstudianteInscrito,
-    Empleado
+    Empleado,
+    Asistencia
 }

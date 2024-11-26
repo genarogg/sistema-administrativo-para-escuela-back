@@ -5,5 +5,12 @@ import loginPost from "./auth/login";
 import registrarEstudiantePost from "./estudiante/registrar";
 
 import registerEmpleado from "./empleado/registrar";
+import generarAsistencia from "./asistencia/general"
 
-export { registerPost, loginPost, registrarEstudiantePost, registerEmpleado };
+export {
+    registerPost,
+    loginPost,
+    registrarEstudiantePost,
+    registerEmpleado,
+    generarAsistencia
+};
