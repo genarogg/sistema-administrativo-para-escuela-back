@@ -5,7 +5,7 @@ import { errorResponse } from "@fn";
 
 const obtenerUsuarios = async (req: Request, res: Response) => {
     try {
-        const data = await User.findAll();
+        const data = (await User.findAll()).reverse();
 
         return res.status(200).json({ data });
 

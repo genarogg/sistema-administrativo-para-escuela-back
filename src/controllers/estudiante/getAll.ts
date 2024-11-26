@@ -5,7 +5,7 @@ import { errorResponse } from "@fn";
 
 const obtenerEstudiantes = async (req: Request, res: Response) => {
     try {
-        const data = await EstudianteInscrito.findAll();
+        const data = (await EstudianteInscrito.findAll()).reverse();
 
         return res.status(200).json({ data });
 

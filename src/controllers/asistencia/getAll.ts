@@ -5,13 +5,13 @@ import { Op } from 'sequelize';
 
 const obtenerAsistencias = async (req: Request, res: Response) => {
     try {
-        const data = await Asistencia.findAll({
+        const data = (await Asistencia.findAll({
             where: {
                 hora_entrada: {
                     [Op.ne]: null
                 }
             }
-        });
+        })).reverse();
 
         return res.status(200).json({ data });
     } catch (error) {

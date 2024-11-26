@@ -5,7 +5,7 @@ import { errorResponse } from "@fn";
 
 const obtenerBitacora = async (req: Request, res: Response) => {
     try {
-        const data = await Bitacora.findAll();
+        const data = (await Bitacora.findAll()).reverse();
 
         return res.status(200).json({ data });
 
