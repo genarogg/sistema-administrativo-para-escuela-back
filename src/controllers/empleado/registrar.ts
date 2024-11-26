@@ -3,13 +3,15 @@ import { Empleado, Bitacora } from "@models";
 import { successResponse, errorResponse } from "@fn";
 
 const registerEmpleado = async (req: Request, res: Response) => {
-    
+
+    console.log("req.body", req.body);
+
     const {
         tipo_empleado,
         nombres,
         apellidos,
         ci,
-        fecha_nacimiento,
+        fecha_nac: fecha_nacimiento,
         telefono,
         correo_electronico,
         fecha_ingreso_mppe,
