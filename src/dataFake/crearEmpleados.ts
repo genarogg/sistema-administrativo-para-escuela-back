@@ -9,7 +9,7 @@ const crearEmpleados = async () => {
                 tipo_empleado: i % 2 === 0 ? 'Docente' : 'Administrativo',
                 nombres: `Nombre${i}`,
                 apellidos: `Apellido${i}`,
-                ci: 10000000 + i,
+                ci: i,
                 fecha_nacimiento: '1980-01-01',
                 telefono: `041412345${i}`,
                 correo_electronico: `email${i}@example.com`,

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Asistencia } from "@models";
-import { successResponse, errorResponse } from "@fn";
+import { errorResponse } from "@fn";
 import { Op } from 'sequelize';
 
 const obtenerAsistencias = async (req: Request, res: Response) => {
@@ -12,6 +12,8 @@ const obtenerAsistencias = async (req: Request, res: Response) => {
                 }
             }
         })).reverse();
+
+        console.log(data);
 
         return res.status(200).json({ data });
     } catch (error) {

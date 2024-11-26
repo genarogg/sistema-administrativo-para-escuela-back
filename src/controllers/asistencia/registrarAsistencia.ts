@@ -19,7 +19,7 @@ const horasSalida = {
 
 const registrarAsistencia = async (req: Request, res: Response) => {
     const { ci, comentario, tipoAction } = req.body;
-
+    console.log(req.body)
     try {
         const empleado = await Empleado.findOne({ where: { ci } });
 
@@ -39,7 +39,8 @@ const registrarAsistencia = async (req: Request, res: Response) => {
             if (asistenciaEmpleado) {
                 await asistenciaEmpleado.update({
                     hora_entrada: horaActual,
-                    comentario_entrada: comentario
+                    comentario_entrada: comentario,
+                    vino: "si"
                 });
             }
 
