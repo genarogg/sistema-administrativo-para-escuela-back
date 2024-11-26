@@ -6,6 +6,7 @@ import estudianteRouter from "./estudiante";
 import empleadoRouter from "./empleado";
 import asistenciaRouter from "./asistencia";
 import bitacoraRouter from "./bitacora";
+import usuarioRouter from "./usuarios";
 
 export {
     inicioRouter,
@@ -13,5 +14,6 @@ export {
     estudianteRouter,
     empleadoRouter,
     asistenciaRouter,
-    bitacoraRouter
+    bitacoraRouter,
+    usuarioRouter
 };
