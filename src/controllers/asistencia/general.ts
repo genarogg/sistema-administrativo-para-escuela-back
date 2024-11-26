@@ -32,14 +32,17 @@ const asistencia = async () => {
             order: [['fecha', 'DESC']]
         });
 
+        if (!ultimoRegistro) {
+            await generateAsistencia();
+            return;
+        }
+
         const fechaHoy = moment().format("YYYY-MM-DD");
 
         if (ultimoRegistro && ultimoRegistro.fecha === fechaHoy) {
             console.log("La asistencia ya ha sido generada para el día de hoy.");
-            return;
         }
 
-        await generateAsistencia();
     } catch (error) {
         console.error(
             "Error al obtener el último registro de asistencia personal:",

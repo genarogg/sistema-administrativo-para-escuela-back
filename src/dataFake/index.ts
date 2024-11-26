@@ -1,9 +1,13 @@
 import crearUsuario from "./crearUsuario";
+import crearEmpleados from "./crearEmpleados";
+import crearEstudiantesInscritos from "./crearEstudiantes";
 import { log } from "@fn";
 import { User } from "@models";
 
-const index = async () => {
 
+const index = async () => {
+    // await crearEmpleados();
+    // crearEstudiantesInscritos()
     try {
         const adminUser = await User.findOne({ where: { role: "admin" } });
 
@@ -15,7 +19,8 @@ const index = async () => {
     } catch (error) {
 
     }
-
+    await crearEmpleados();
+    await crearEstudiantesInscritos()
     await crearUsuario({
         nombre: "Admin",
         apellido: "Admin",
@@ -26,16 +31,17 @@ const index = async () => {
         cargoInstitucional: "Admin"
     });
 
-    // await crearUsuario({
-    //     nombre: "Usuario",
-    //     apellido: "Usuario",
-    //     email: "usuario@usuario.com",
-    //     password: "usuario",
-    //     role: "standard",
-    //     ci: "123456",
-    //     cargoInstitucional: "Usuario"
-    // });
+    await crearUsuario({
+        nombre: "Usuario",
+        apellido: "Usuario",
+        email: "usuario@usuario.com",
+        password: "usuario",
+        role: "standard",
+        ci: "123456",
+        cargoInstitucional: "Usuario"
+    });
 
+    
     log.cyan("Usuarios creados exitosamente");
 }
 

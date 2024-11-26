@@ -3,8 +3,8 @@ import { log, path } from "functions";
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: ":memory:",
-  // storage: path.join(__dirname, "/db.sqlite"),
+  // storage: ":memory:",
+  storage: path.join(__dirname, "/db.sqlite"),
   logging: false,
 });
 
